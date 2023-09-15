@@ -11,11 +11,11 @@ function getGoogleCredentials() {
   console.log(clientId, clientSecret);
 
   if (!clientId || clientId.length === 0) {
-    throw new Error("Missing GOOGLE_CLIENT_ID");
+    throw new Error("Missing GITHUB_CLIENT_ID");
   }
 
   if (!clientSecret || clientSecret.length === 0) {
-    throw new Error("Missing GOOGLE_CLIENT_SECRET");
+    throw new Error("Missing GITHUB_CLIENT_SECRET");
   }
 
   return { clientId, clientSecret };
@@ -70,8 +70,8 @@ export const authOptions: NextAuthOptions = {
 
       return session;
     },
-    redirect() {
-      return "/dashboard";
+    async redirect({ url, baseUrl }) {
+      return baseUrl;
     },
   },
 };
