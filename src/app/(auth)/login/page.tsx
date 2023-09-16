@@ -11,7 +11,9 @@ const Page: FC = () => {
   async function loginWithGoogle() {
     setIsLoading(true);
     try {
-      await signIn("github");
+      await signIn("github",{
+        callbackUrl: process.env.NEXTAUTH_URL as string,
+      });
     } catch (error) {
       // display error message to user
       toast.error("Something went wrong with your login.");
